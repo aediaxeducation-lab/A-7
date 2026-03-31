@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amresh Book | AediaX Books</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e1e1e;
+            background: #ffffff;
+        }
+        
+        .book-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+        
+        /* Book Header */
+        .book-header {
+            background: #ffffff;
+            border-bottom: 2px solid #3b82f6;
+            padding: 48px;
+        }
+        
+        .book-header-content {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .book-cover {
+            flex: 0 0 280px;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .book-info {
+            flex: 1;
+        }
+        
+        .book-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3b82f6;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e1e1e;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .book-description {
+            color: #4a5568;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            font-size: 0.875rem;
+        }
+        
+        .meta-item .material-icons {
+            color: #3b82f6;
+            font-size: 18px;
+        }
+        
+        /* Main Content */
+        .book-main {
+            padding: 48px;
+        }
+        
+        /* Chapters Section */
+        .chapters-section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e1e1e;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .chapter-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .chapter-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            cursor: pointer;
+            background: #ffffff;
+            transition: background 0.2s;
+        }
+        
+        .chapter-header:hover {
+            background: #f1f5f9;
+        }
+        
+        .chapter-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+        
+        .chapter-number {
+            background: #3b82f6;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .chapter-title-text {
+            font-size: 1rem;
+        }
+        
+        .chapter-toggle {
+            color: #3b82f6;
+        }
+        
+        .chapter-content {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: #f8fafc;
+        }
+        
+        .chapter-content.open {
+            max-height: 5000px;
+            padding: 20px 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .chapter-description {
+            color: #4a5568;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        
+        .course-content-container {
+            background: white;
+            border-radius: 8px;
+            overflow: auto;
+            max-height: 80vh;
+        }
+        
+        .course-loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+        
+        .course-error {
+            text-align: center;
+            padding: 60px 20px;
+            color: #ef4444;
+            background: #fef2f2;
+            border-radius: 8px;
+        }
+        
+        .course-error .material-icons {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .retry-button {
+            margin-top: 16px;
+            padding: 8px 20px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .retry-button:hover {
+            background: #2563eb;
+        }
+        
+        /* Book Details Section */
+        .book-details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 48px;
+        }
+        
+        .details-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .detail-icon {
+            color: #3b82f6;
+        }
+        
+        .detail-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #1e1e1e;
+            margin-top: 4px;
+        }
+        
+        /* Footer */
+        .book-footer {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 0.8125rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        
+        .footer-link:hover {
+            color: #3b82f6;
+        }
+        
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .book-header {
+                padding: 24px;
+            }
+            
+            .book-header-content {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .book-cover {
+                flex: 0 0 auto;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            
+            .book-title {
+                font-size: 1.75rem;
+            }
+            
+            .book-main {
+                padding: 24px;
+            }
+            
+            .chapter-header {
+                padding: 16px 20px;
+            }
+            
+            .chapter-title-text {
+                font-size: 0.875rem;
+            }
+            
+            .details-grid {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .book-title {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+            
+            .chapter-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book-wrapper">
+        <!-- Book Header -->
+        <div class="book-header">
+            <div class="book-header-content">
+                <div class="book-cover">
+                    <img src="https://raw.githubusercontent.com/aediaxeducation-lab/A-5/main/book-covers/1774969902777_amresh-book.png?t=1774969902777" alt="Amresh Book">
+                </div>
+                <div class="book-info">
+                    <div class="book-badge">
+                        <span class="material-icons">menu_book</span>
+                        <span>BOOK</span>
+                    </div>
+                    <h1 class="book-title">Amresh Book</h1>
+                    <p class="book-description">Auth Amresh</p>
+                    <div class="book-meta">
+                        <div class="meta-item">
+                            <span class="material-icons">person</span>
+                            <span>Author: Amresh</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-icons">calendar_today</span>
+                            <span>Published: 3/31/2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-icons">language</span>
+                            <span>English</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-icons">auto_awesome</span>
+                            <span>Edition: 1st Edition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="book-main">
+            <!-- Chapters -->
+            <div class="chapters-section">
+                <h2 class="section-title">Chapters</h2>
+                <div class="chapters-list">
+                    
+                        <div class="chapter-item">
+                            <div class="chapter-header" onclick="toggleChapter(0)">
+                                <div class="chapter-title">
+                                    <div class="chapter-number">1</div>
+                                    <div class="chapter-title-text">Create New Course</div>
+                                </div>
+                                <div class="chapter-toggle">
+                                    <span class="material-icons" id="chapter-icon-0">chevron_right</span>
+                                </div>
+                            </div>
+                            <div class="chapter-content" id="chapter-content-0">
+                                <div class="chapter-description">Build your course using the visual editor. Insert media, code examples, and quiz modules from your library.
+
+Course Information</div>
+                                <div id="chapter-content-container-0" class="course-content-container">
+                                    <div class="course-loading">
+                                        <div class="spinner"></div>
+                                        <p style="margin-top: 12px;">Loading course content...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="chapter-item">
+                            <div class="chapter-header" onclick="toggleChapter(1)">
+                                <div class="chapter-title">
+                                    <div class="chapter-number">2</div>
+                                    <div class="chapter-title-text">Acccunt</div>
+                                </div>
+                                <div class="chapter-toggle">
+                                    <span class="material-icons" id="chapter-icon-1">chevron_right</span>
+                                </div>
+                            </div>
+                            <div class="chapter-content" id="chapter-content-1">
+                                <div class="chapter-description">sss</div>
+                                <div id="chapter-content-container-1" class="course-content-container">
+                                    <div class="course-loading">
+                                        <div class="spinner"></div>
+                                        <p style="margin-top: 12px;">Loading course content...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="chapter-item">
+                            <div class="chapter-header" onclick="toggleChapter(2)">
+                                <div class="chapter-title">
+                                    <div class="chapter-number">3</div>
+                                    <div class="chapter-title-text">Create New Course</div>
+                                </div>
+                                <div class="chapter-toggle">
+                                    <span class="material-icons" id="chapter-icon-2">chevron_right</span>
+                                </div>
+                            </div>
+                            <div class="chapter-content" id="chapter-content-2">
+                                <div class="chapter-description">Build your course using the visual editor. Insert media, code, and question papers from your library.</div>
+                                <div id="chapter-content-container-2" class="course-content-container">
+                                    <div class="course-loading">
+                                        <div class="spinner"></div>
+                                        <p style="margin-top: 12px;">Loading course content...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="chapter-item">
+                            <div class="chapter-header" onclick="toggleChapter(3)">
+                                <div class="chapter-title">
+                                    <div class="chapter-number">4</div>
+                                    <div class="chapter-title-text">Create New Course</div>
+                                </div>
+                                <div class="chapter-toggle">
+                                    <span class="material-icons" id="chapter-icon-3">chevron_right</span>
+                                </div>
+                            </div>
+                            <div class="chapter-content" id="chapter-content-3">
+                                <div class="chapter-description">Build your course using the visual editor. Insert media, code, and question papers from your library.</div>
+                                <div id="chapter-content-container-3" class="course-content-container">
+                                    <div class="course-loading">
+                                        <div class="spinner"></div>
+                                        <p style="margin-top: 12px;">Loading course content...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Book Details -->
+            <div class="book-details">
+                <h2 class="section-title">Book Details</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <span class="material-icons">fingerprint</span>
+                        </div>
+                        <div>
+                            <div class="detail-label">ISBN</div>
+                            <div class="detail-value">123999</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <span class="material-icons">business</span>
+                        </div>
+                        <div>
+                            <div class="detail-label">Publisher ID</div>
+                            <div class="detail-value">3333</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <span class="material-icons">auto_awesome</span>
+                        </div>
+                        <div>
+                            <div class="detail-label">Edition</div>
+                            <div class="detail-value">1st Edition</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <span class="material-icons">language</span>
+                        </div>
+                        <div>
+                            <div class="detail-label">Language</div>
+                            <div class="detail-value">English</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="book-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">menu_book</span>
+                        AediaX Books
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">help_outline</span>
+                        Help
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">privacy_tip</span>
+                        Privacy
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">description</span>
+                        Terms
+                    </a>
+                </div>
+                <div class="copyright">
+                    © 2026 AediaX Education. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Store chapter data
+        const chaptersData = [{"id":"vybPS1qpYyGMMg38TN7y","courseUrl":"https://raw.githubusercontent.com/aediaxeducation-lab/A-10/main/courses/1774961401824_create-new-course.html?t=1774961603443","title":"Create New Course","description":"Build your course using the visual editor. Insert media, code examples, and quiz modules from your library.\n\nCourse Information"},{"id":"SEsSliYDmBHc7fjkDOdS","courseUrl":"https://raw.githubusercontent.com/aediaxeducation-lab/A-4/main/courses/1774960597414_acccunt.html?t=1774960597414","title":"Acccunt","description":"sss"},{"id":"PH4BFXxIEhfsVnkAGoBV","courseUrl":"https://raw.githubusercontent.com/aediaxeducation-lab/A-7/main/courses/1774953671189_create-new-course.html?t=1774953671189","title":"Create New Course","description":"Build your course using the visual editor. Insert media, code, and question papers from your library."},{"id":"CktZHzCaIhAweqOEoo4A","courseUrl":"https://raw.githubusercontent.com/aediaxeducation-lab/A-7/main/courses/1774944269972_create-new-course.html?t=1774944269972","title":"Create New Course","description":"Build your course using the visual editor. Insert media, code, and question papers from your library."}];
+        
+        // Track loaded chapters
+        const loadedChapters = {};
+        
+        // CORS proxy URL (use a free CORS proxy)
+        const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+        
+        async function loadCourseContent(index) {
+            const container = document.getElementById('chapter-content-container-' + index);
+            const chapter = chaptersData[index];
+            
+            if (!chapter || !chapter.courseUrl) {
+                container.innerHTML = `
+                    <div class="course-error">
+                        <span class="material-icons">error_outline</span>
+                        <p>Course content not available</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            try {
+                container.innerHTML = `
+                    <div class="course-loading">
+                        <div class="spinner"></div>
+                        <p style="margin-top: 12px;">Loading course content...</p>
+                    </div>
+                `;
+                
+                // Try to fetch directly first
+                let response;
+                try {
+                    response = await fetch(chapter.courseUrl);
+                } catch (directError) {
+                    // If direct fetch fails, try with CORS proxy
+                    console.log('Direct fetch failed, trying with proxy...');
+                    response = await fetch(CORS_PROXY + chapter.courseUrl);
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                let html = await response.text();
+                
+                // Extract the main content from the course HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Try to find course content in various possible containers
+                let courseContent = doc.querySelector('.course-content');
+                if (!courseContent) courseContent = doc.querySelector('.course-wrapper');
+                if (!courseContent) courseContent = doc.querySelector('main');
+                if (!courseContent) courseContent = doc.body;
+                
+                // Create a styled container for the course content
+                const contentWrapper = document.createElement('div');
+                contentWrapper.className = 'loaded-course-content';
+                contentWrapper.style.cssText = `
+                    font-family: 'Inter', sans-serif;
+                    line-height: 1.6;
+                    color: #1e1e1e;
+                `;
+                
+                // Copy the content
+                if (courseContent && courseContent.innerHTML) {
+                    contentWrapper.innerHTML = courseContent.innerHTML;
+                    
+                    // Fix relative paths to absolute
+                    const baseUrl = chapter.courseUrl.substring(0, chapter.courseUrl.lastIndexOf('/') + 1);
+                    contentWrapper.querySelectorAll('img, a, link, script').forEach(el => {
+                        if (el.src && !el.src.startsWith('http') && !el.src.startsWith('data:')) {
+                            el.src = baseUrl + el.src;
+                        }
+                        if (el.href && !el.href.startsWith('http')) {
+                            el.href = baseUrl + el.href;
+                        }
+                    });
+                    
+                    // Re-run any scripts if needed
+                    contentWrapper.querySelectorAll('script').forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        contentWrapper.appendChild(newScript);
+                    });
+                    
+                    container.innerHTML = '';
+                    container.appendChild(contentWrapper);
+                    
+                    // Apply responsive styles to images and videos
+                    const mediaElements = container.querySelectorAll('img, video, audio');
+                    mediaElements.forEach(el => {
+                        el.style.maxWidth = '100%';
+                        el.style.height = 'auto';
+                        if (el.tagName === 'VIDEO') {
+                            el.style.width = '100%';
+                        }
+                    });
+                    
+                    // Highlight code blocks if Prism is available
+                    if (typeof Prism !== 'undefined') {
+                        Prism.highlightAllUnder(container);
+                    }
+                    
+                } else {
+                    throw new Error('Could not extract course content');
+                }
+                
+                loadedChapters[index] = true;
+                
+            } catch (error) {
+                console.error('Error loading course:', error);
+                container.innerHTML = `
+                    <div class="course-error">
+                        <span class="material-icons">error_outline</span>
+                        <p>Failed to load course content</p>
+                        <p style="font-size: 0.875rem; margin-top: 8px;">${error.message}</p>
+                        <button class="retry-button" onclick="loadCourseContent(${index})">
+                            <span class="material-icons" style="font-size: 16px; vertical-align: middle;">refresh</span>
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        function toggleChapter(index) {
+            const content = document.getElementById('chapter-content-' + index);
+            const icon = document.getElementById('chapter-icon-' + index);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.textContent = 'chevron_right';
+            } else {
+                content.classList.add('open');
+                icon.textContent = 'expand_more';
+                
+                // Load course content if not already loaded
+                if (!loadedChapters[index]) {
+                    loadCourseContent(index);
+                }
+            }
+        }
+        
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Optional: Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any open chapters if needed
+            }
+        });
+    </script>
+</body>
+</html>
