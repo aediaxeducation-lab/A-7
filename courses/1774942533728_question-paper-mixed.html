@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Question paper Mixed | AediaX Education</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" rel="stylesheet" />
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #202122;
+            background-color: #f8f9fa;
+        }
+        
+        /* Course Container */
+        .course-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        /* Hero Section */
+        .course-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 1px solid #e9ecef;
+            padding: 60px 40px;
+            position: relative;
+        }
+        
+        .course-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .course-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        
+        .course-badge .material-icons {
+            font-size: 18px;
+        }
+        
+        .course-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #202124;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .course-description {
+            font-size: 1.2rem;
+            color: #5f6368;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-bottom: 32px;
+        }
+        
+        .course-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5f6368;
+            font-size: 0.9rem;
+        }
+        
+        .stat-item .material-icons {
+            font-size: 20px;
+            color: #9aa0a6;
+        }
+        
+        /* Main Content Layout */
+        .course-main {
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+        }
+        
+        /* Sidebar - Table of Contents */
+        .course-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+        }
+        
+        .toc-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .toc-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toc-title .material-icons {
+            font-size: 20px;
+            color: #1a73e8;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 10px;
+        }
+        
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .toc-link:hover {
+            background: #e8f0fe;
+            color: #1a73e8;
+        }
+        
+        .toc-link .material-icons {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+        
+        /* Content Area */
+        .course-content-area {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Content Styling */
+        .course-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #202122;
+        }
+        
+        .course-content h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ecef;
+            color: #202124;
+        }
+        
+        .course-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 28px 0 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e9ecef;
+            color: #202124;
+        }
+        
+        .course-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 24px 0 12px 0;
+            color: #3c4043;
+        }
+        
+        .course-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            color: #5f6368;
+        }
+        
+        .course-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        /* Image and Media Responsive */
+        .course-content img,
+        .course-content video,
+        .course-content audio {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .course-content video {
+            width: 100%;
+            background: #000;
+        }
+        
+        .course-content audio {
+            width: 100%;
+            background: #f1f3f4;
+            padding: 12px;
+            border-radius: 12px;
+        }
+        
+        .figure-container {
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .figure-caption {
+            font-size: 0.85rem;
+            color: #5f6368;
+            margin-top: 8px;
+        }
+        
+        /* Question Paper Styles */
+        .question-paper {
+            margin: 40px 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .paper-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 24px 28px;
+        }
+        
+        .paper-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+        
+        .paper-description {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .paper-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .paper-meta-item .material-icons {
+            font-size: 16px;
+        }
+        
+        .paper-instructions {
+            background: #fef7e0;
+            border-left: 4px solid #f9ab00;
+            padding: 16px 20px;
+            margin: 0;
+        }
+        
+        .paper-instructions-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .paper-questions {
+            padding: 20px 28px;
+        }
+        
+        .question-item {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .question-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .question-number {
+            background: #1a73e8;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .question-marks {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .question-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #f1f3f4;
+            color: #5f6368;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .mcq-options {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0 24px;
+        }
+        
+        .mcq-option {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .mcq-option:hover {
+            background: #e8f0fe;
+        }
+        
+        .mcq-option.correct {
+            background: #e6f4ea;
+            border-left: 3px solid #34a853;
+        }
+        
+        .option-letter {
+            font-weight: 600;
+            min-width: 28px;
+            color: #5f6368;
+        }
+        
+        .option-text {
+            flex: 1;
+        }
+        
+        .correct-indicator {
+            color: #34a853;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+        
+        .model-answer {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            border-left: 3px solid #22c55e;
+        }
+        
+        .model-answer-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #22c55e;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .keyword-tag {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+        }
+        
+        .coding-details {
+            margin-top: 16px;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .coding-section {
+            padding: 16px;
+            border-bottom: 1px solid #2d2d2d;
+        }
+        
+        .coding-section-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .coding-section-content {
+            color: #d4d4d4;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+        }
+        
+        .sample-box {
+            background: #2d2d2d;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+        
+        .test-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .test-case {
+            background: #2d2d2d;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+        
+        /* Quiz Mode Styles */
+        .quiz-mode-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px 0;
+            transition: all 0.2s;
+        }
+        
+        .quiz-mode-btn:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+        }
+        
+        .quiz-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 24px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .quiz-question.selected {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e9ecef;
+        }
+        
+        .quiz-option:hover {
+            background: #e8f0fe;
+        }
+        
+        .quiz-option.selected {
+            background: #e8f0fe;
+            border-color: #1a73e8;
+        }
+        
+        .quiz-option.correct-answer {
+            background: #e6f4ea;
+            border-color: #34a853;
+        }
+        
+        .quiz-option.wrong-answer {
+            background: #fce8e6;
+            border-color: #ea4335;
+        }
+        
+        .quiz-feedback {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .quiz-feedback.correct {
+            background: #e6f4ea;
+            color: #137333;
+        }
+        
+        .quiz-feedback.wrong {
+            background: #fce8e6;
+            color: #c5221f;
+        }
+        
+        .quiz-results {
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .quiz-score {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        
+        .quiz-percentage {
+            font-size: 1.2rem;
+            color: #5f6368;
+        }
+        
+        /* Code Block Styling */
+        .code-block {
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1e1e1e;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2d2d2d;
+            padding: 12px 20px;
+            border-bottom: 1px solid #3d3d3d;
+        }
+        
+        .code-language {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #e0e0e0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .code-copy {
+            background: transparent;
+            border: none;
+            color: #a0a0a0;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .code-copy:hover {
+            background: #3d3d3d;
+            color: white;
+        }
+        
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            background: #1e1e1e;
+        }
+        
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        :not(pre) > code {
+            background: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #d63384;
+            font-size: 0.85rem;
+        }
+        
+        /* Blockquote */
+        .course-content blockquote {
+            margin: 20px 0;
+            padding: 16px 24px;
+            background: #f8f9fa;
+            border-left: 4px solid #1a73e8;
+            border-radius: 8px;
+            color: #5f6368;
+            font-style: italic;
+        }
+        
+        /* Tables */
+        .course-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        .course-content th,
+        .course-content td {
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .course-content th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        /* Media Gallery */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 32px 0;
+        }
+        
+        .media-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .media-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .media-preview {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #f8f9fa;
+        }
+        
+        .media-info {
+            padding: 12px 16px;
+        }
+        
+        .media-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+        }
+        
+        /* Callout Boxes */
+        .callout {
+            margin: 24px 0;
+            padding: 20px 24px;
+            border-radius: 12px;
+            display: flex;
+            gap: 16px;
+        }
+        
+        .callout-info {
+            background: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+        }
+        
+        .callout-warning {
+            background: #fef7e0;
+            border-left: 4px solid #f9ab00;
+        }
+        
+        .callout-tip {
+            background: #e6f4ea;
+            border-left: 4px solid #34a853;
+        }
+        
+        .callout-icon .material-icons {
+            font-size: 24px;
+        }
+        
+        .callout-info .callout-icon .material-icons { color: #1a73e8; }
+        .callout-warning .callout-icon .material-icons { color: #f9ab00; }
+        .callout-tip .callout-icon .material-icons { color: #34a853; }
+        
+        .callout-content {
+            flex: 1;
+        }
+        
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .course-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .footer-link:hover {
+            color: #1a73e8;
+        }
+        
+        .copyright {
+            color: #9aa0a6;
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-main {
+                flex-direction: column;
+                padding: 24px;
+            }
+            
+            .course-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 32px;
+            }
+            
+            .course-title {
+                font-size: 2.5rem;
+            }
+            
+            .course-hero {
+                padding: 40px 24px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 1.8rem;
+            }
+            
+            .course-description {
+                font-size: 1rem;
+            }
+            
+            .course-stats {
+                gap: 16px;
+            }
+            
+            .course-content h1 { font-size: 1.6rem; }
+            .course-content h2 { font-size: 1.4rem; }
+            .course-content h3 { font-size: 1.2rem; }
+            
+            .paper-header {
+                padding: 16px 20px;
+            }
+            
+            .paper-title {
+                font-size: 1.2rem;
+            }
+            
+            .paper-questions {
+                padding: 16px 20px;
+            }
+            
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .media-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                gap: 20px;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .course-sidebar,
+            .course-footer,
+            .course-badge,
+            .quiz-mode-btn {
+                display: none;
+            }
+            
+            .course-main {
+                padding: 0;
+            }
+            
+            .course-content {
+                color: black;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .course-main,
+        .question-paper {
+            animation: fadeIn 0.4s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="course-wrapper">
+        <!-- Hero Section -->
+        <div class="course-hero">
+            <div class="course-hero-content">
+                <div class="course-badge">
+                    <span class="material-icons">school</span>
+                    <span>Online Course</span>
+                </div>
+                <h1 class="course-title">Question paper Mixed</h1>
+                <p class="course-description">Question paper Mixed</p>
+                <div class="course-stats">
+                    <div class="stat-item">
+                        <span class="material-icons">event</span>
+                        <span>Created: March 31, 2026</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons">folder</span>
+                        <span>0 Resources</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons">code</span>
+                        <span>0 Code Examples</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons">quiz</span>
+                        <span>1 Assessments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="course-main">
+            <!-- Sidebar with Table of Contents -->
+            <aside class="course-sidebar">
+                <div class="toc-card">
+                    <div class="toc-title">
+                        <span class="material-icons">menu_book</span>
+                        <span>Contents</span>
+                    </div>
+                    <nav>
+                        <ul class="toc-list" id="table-of-contents"></ul>
+                    </nav>
+                </div>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <main class="course-content-area">
+                <div class="course-content">
+                    <h3>Question paper Mixed</h3><p>Duration: 60 min</p><p>Total Marks: 16</p><p>Questions: 3</p><ol><li><strong>d</strong> (1 marks)</li><li><strong>ww</strong> (5 marks)</li><li><strong>www</strong> (10 marks)</li></ol><p class="ql-align-center"><a href="https://raw.githubusercontent.com/aediaxeducation-lab/A-6/main/question_papers/mixed/1774938585814_dd.json?t=1774938585814" rel="noopener noreferrer" target="_blank">View Full Question Paper</a></p>
+                    
+                    
+                        <div class="question-papers-section">
+                            
+    <div class="question-paper" id="paper-LwicxTXhmW2e2Mze7SFP">
+      <div class="paper-header">
+        <h2 class="paper-title">dd</h2>
+        <p class="paper-description">dd</p>
+        <div class="paper-meta">
+          <span class="paper-meta-item"><span class="material-icons">schedule</span>Duration: 60 minutes</span>
+          <span class="paper-meta-item"><span class="material-icons">scoreboard</span>Total Marks: 16</span>
+          <span class="paper-meta-item"><span class="material-icons">quiz</span>Questions: 3</span>
+          <span class="paper-meta-item"><span class="material-icons">check_circle</span>Passing: 7 marks</span>
+        </div>
+      </div>
+      
+      
+        <div class="paper-instructions">
+          <div class="paper-instructions-title">
+            <span class="material-icons">info</span>
+            <span>Instructions</span>
+          </div>
+          <div>dd</div>
+        </div>
+      
+      
+      <button class="quiz-mode-btn" onclick="startQuizMode('LwicxTXhmW2e2Mze7SFP')" style="margin: 20px;">
+        <span class="material-icons">quiz</span>
+        Take Test Mode
+      </button>
+      
+      <div id="quiz-container-LwicxTXhmW2e2Mze7SFP" style="display: none;"></div>
+      
+      <div id="original-content-LwicxTXhmW2e2Mze7SFP" class="paper-questions">
+        
+    <div class="question-item">
+      <div class="question-header">
+        <div class="question-number">Q1</div>
+        <div class="question-marks">1 marks</div>
+        <div class="question-type">
+          <span class="material-icons">quiz</span>
+          <span>Multiple Choice</span>
+        </div>
+      </div>
+      <div class="question-text">d</div>
+  <ul class="mcq-options">
+        <li class="mcq-option correct">
+          <div class="option-letter"><strong>A.</strong></div>
+          <div class="option-text">1</div>
+          <div class="correct-indicator"><span class="material-icons">check_circle</span> Correct Answer</div>
+        </li>
+      
+        <li class="mcq-option ">
+          <div class="option-letter"><strong>B.</strong></div>
+          <div class="option-text">13</div>
+          
+        </li>
+      
+        <li class="mcq-option ">
+          <div class="option-letter"><strong>C.</strong></div>
+          <div class="option-text">2</div>
+          
+        </li>
+      
+        <li class="mcq-option ">
+          <div class="option-letter"><strong>D.</strong></div>
+          <div class="option-text">3</div>
+          
+        </li>
+      </ul></div>
+    <div class="question-item">
+      <div class="question-header">
+        <div class="question-number">Q2</div>
+        <div class="question-marks">5 marks</div>
+        <div class="question-type">
+          <span class="material-icons">description</span>
+          <span>Written Answer</span>
+        </div>
+      </div>
+      <div class="question-text">ww</div>
+  
+      <div class="model-answer">
+        <div class="model-answer-title">
+          <span class="material-icons">description</span>
+          Model Answer
+        </div>
+        <div>ww</div>
+        
+      </div>
+    </div>
+    <div class="question-item">
+      <div class="question-header">
+        <div class="question-number">Q3</div>
+        <div class="question-marks">10 marks</div>
+        <div class="question-type">
+          <span class="material-icons">code</span>
+          <span>Coding Problem</span>
+        </div>
+      </div>
+      <div class="question-text">www</div>
+  <div class="coding-details">
+        <div class="coding-section">
+          <div class="coding-section-title"><span class="material-icons">input</span>Input Format</div>
+          <div class="coding-section-content">ww</div>
+        </div>
+      
+        <div class="coding-section">
+          <div class="coding-section-title"><span class="material-icons">output</span>Output Format</div>
+          <div class="coding-section-content">ww</div>
+        </div>
+      
+        <div class="coding-section">
+          <div class="coding-section-title"><span class="material-icons">lock</span>Constraints</div>
+          <div class="coding-section-content">ww</div>
+        </div>
+      
+        <div class="coding-section">
+          <div class="coding-section-title"><span class="material-icons">code</span>Sample</div>
+          <div class="sample-box"><strong>Input:</strong><br>www</div>
+          <div class="sample-box"><strong>Output:</strong><br>ww</div>
+        </div>
+      
+        <div class="coding-section">
+          <div class="coding-section-title"><span class="material-icons">science</span>Test Cases (1)</div>
+          <div class="test-cases">
+            
+              <div class="test-case">
+                <div><strong>Input:</strong> w</div>
+                <div><strong>Output:</strong> w</div>
+              </div>
+            
+            
+          </div>
+        </div>
+      </div></div>
+      </div>
+    </div>
+  
+                        </div>
+                    
+                </div>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="course-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">school</span>
+                        AediaX Education
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">help</span>
+                        Help Center
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">privacy_tip</span>
+                        Privacy Policy
+                    </a>
+                    <a href="#" class="footer-link">
+                        <span class="material-icons">terms</span>
+                        Terms of Service
+                    </a>
+                </div>
+                <div class="copyright">
+                    © 2026 AediaX Education. All rights reserved. | Empowering learners worldwide
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Generate Table of Contents
+        function generateTOC() {
+            const content = document.querySelector('.course-content');
+            if (!content) return;
+            
+            const headings = content.querySelectorAll('h1, h2, h3');
+            const tocList = document.getElementById('table-of-contents');
+            if (!tocList || headings.length === 0) return;
+            
+            tocList.innerHTML = '';
+            
+            headings.forEach((heading, index) => {
+                if (!heading.id) {
+                    heading.id = 'section-' + index;
+                }
+                
+                const level = parseInt(heading.tagName.substring(1));
+                let marginLeft = '';
+                if (level === 2) marginLeft = 'margin-left: 16px;';
+                if (level === 3) marginLeft = 'margin-left: 32px;';
+                
+                const li = document.createElement('li');
+                li.className = 'toc-item';
+                li.style.listStyle = 'none';
+                
+                const link = document.createElement('a');
+                link.className = 'toc-link';
+                link.href = '#' + heading.id;
+                link.style.cssText = marginLeft;
+                link.innerHTML = '<span class="material-icons">' + (level === 1 ? 'article' : 'chevron_right') + '</span><span>' + escapeHtml(heading.textContent) + '</span>';
+                
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                
+                li.appendChild(link);
+                tocList.appendChild(li);
+            });
+        }
+        
+        // Add copy buttons to code blocks
+        function addCopyButtons() {
+            const codeBlocks = document.querySelectorAll('pre');
+            codeBlocks.forEach((pre) => {
+                const code = pre.querySelector('code');
+                if (!code) return;
+                
+                const classList = code.className || '';
+                const langMatch = classList.match(/language-(\w+)/);
+                const language = langMatch ? langMatch[1] : 'code';
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'code-block';
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+                
+                const header = document.createElement('div');
+                header.className = 'code-header';
+                header.innerHTML = '<div class="code-language"><span class="material-icons">code</span><span>' + language.toUpperCase() + '</span></div><button class="code-copy" onclick="copyCode(this)"><span class="material-icons">content_copy</span><span>Copy</span></button>';
+                wrapper.insertBefore(header, pre);
+            });
+        }
+        
+        // Copy code function
+        window.copyCode = function(button) {
+            const wrapper = button.closest('.code-block');
+            const pre = wrapper.querySelector('pre');
+            const code = pre.querySelector('code');
+            const text = code ? code.textContent : pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<span class="material-icons">check</span><span>Copied!</span>';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            });
+        };
+        
+        // Quiz Mode Functions
+        window.startQuizMode = function(paperId) {
+            const container = document.getElementById('quiz-container-' + paperId);
+            const originalContent = document.getElementById('original-content-' + paperId);
+            const questions = window.questionData[paperId];
+            
+            if (!questions) return;
+            
+            container.style.display = 'block';
+            originalContent.style.display = 'none';
+            
+            renderQuiz(paperId, questions);
+        };
+        
+        window.showOriginalContent = function(paperId) {
+            const container = document.getElementById('quiz-container-' + paperId);
+            const originalContent = document.getElementById('original-content-' + paperId);
+            
+            container.style.display = 'none';
+            originalContent.style.display = 'block';
+        };
+        
+        function renderQuiz(paperId, questions) {
+            const container = document.getElementById('quiz-container-' + paperId);
+            if (!container) return;
+            
+            let userAnswers = {};
+            let quizSubmitted = false;
+            
+            const renderQuestions = () => {
+                let html = '<div class="quiz-container" style="padding: 0;">';
+                html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">';
+                html += '<h3 style="margin: 0;">Test Your Knowledge</h3>';
+                html += '<div><button class="quiz-mode-btn" onclick="submitQuiz(\'' + paperId + '\')" style="margin: 0; background: #34a853;">Submit Quiz</button>';
+                html += '<button class="quiz-mode-btn" onclick="showOriginalContent(\'' + paperId + '\')" style="margin: 0; background: #5f6368;">Back to Paper</button></div>';
+                html += '</div>';
+                
+                questions.forEach((q, idx) => {
+                    html += '<div class="quiz-question" id="quiz-question-' + paperId + '-' + idx + '">';
+                    html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">';
+                    html += '<div class="question-number" style="width: auto; padding: 0 12px; border-radius: 20px;">Q' + (idx + 1) + '</div>';
+                    html += '<div class="question-marks">' + (q.marks || 1) + ' marks</div>';
+                    html += '</div>';
+                    html += '<div class="question-text">' + escapeHtml(q.text) + '</div>';
+                    
+                    if (q.type === 'mcq' && q.options) {
+                        html += '<div class="mcq-options" style="list-style: none; padding: 0;">';
+                        q.options.forEach((opt, optIdx) => {
+                            const letter = String.fromCharCode(65 + optIdx);
+                            const isSelected = userAnswers[q.id] === optIdx;
+                            html += '<div class="quiz-option" onclick="selectAnswer(\'' + paperId + '\', ' + q.id + ', ' + optIdx + ', ' + idx + ')" style="' + (isSelected ? 'border-color: #1a73e8; background: #e8f0fe;' : '') + '">';
+                            html += '<div class="option-letter"><strong>' + letter + '.</strong></div>';
+                            html += '<div class="option-text">' + escapeHtml(opt) + '</div>';
+                            html += '</div>';
+                        });
+                        html += '</div>';
+                    }
+                    
+                    if (quizSubmitted && userAnswers[q.id] !== undefined) {
+                        const isCorrect = userAnswers[q.id] === q.correctOption;
+                        html += '<div class="quiz-feedback ' + (isCorrect ? 'correct' : 'wrong') + '">';
+                        html += '<span class="material-icons" style="font-size: 16px; vertical-align: middle;">' + (isCorrect ? 'check_circle' : 'error') + '</span> ';
+                        html += (isCorrect ? 'Correct!' : 'Incorrect. The correct answer is: ' + String.fromCharCode(65 + q.correctOption));
+                        if (q.explanation) html += '<br><small>' + escapeHtml(q.explanation) + '</small>';
+                        html += '</div>';
+                    }
+                    
+                    html += '</div>';
+                });
+                
+                if (quizSubmitted) {
+                    const totalMarks = questions.reduce((sum, q) => sum + (q.marks || 1), 0);
+                    const earnedMarks = questions.reduce((sum, q) => {
+                        if (userAnswers[q.id] === q.correctOption) return sum + (q.marks || 1);
+                        return sum;
+                    }, 0);
+                    const percentage = (earnedMarks / totalMarks * 100).toFixed(1);
+                    
+                    html += '<div class="quiz-results">';
+                    html += '<div class="quiz-score">' + earnedMarks + ' / ' + totalMarks + '</div>';
+                    html += '<div class="quiz-percentage">' + percentage + '%</div>';
+                    html += '<button class="quiz-mode-btn" onclick="resetQuiz(\'' + paperId + '\')" style="margin-top: 16px;">Try Again</button>';
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+                container.innerHTML = html;
+            };
+            
+            window.selectAnswer = function(pid, qid, optIdx, qIdx) {
+                if (quizSubmitted) return;
+                userAnswers[qid] = optIdx;
+                
+                // Update UI
+                const questionDiv = document.getElementById('quiz-question-' + pid + '-' + qIdx);
+                if (questionDiv) {
+                    const options = questionDiv.querySelectorAll('.quiz-option');
+                    options.forEach((opt, i) => {
+                        if (i === optIdx) {
+                            opt.style.borderColor = '#1a73e8';
+                            opt.style.background = '#e8f0fe';
+                        } else {
+                            opt.style.borderColor = '#e9ecef';
+                            opt.style.background = '';
+                        }
+                    });
+                }
+            };
+            
+            window.submitQuiz = function(pid) {
+                quizSubmitted = true;
+                renderQuestions();
+            };
+            
+            window.resetQuiz = function(pid) {
+                userAnswers = {};
+                quizSubmitted = false;
+                renderQuestions();
+            };
+            
+            renderQuestions();
+        }
+        
+        // Store question data
+        window.questionData = {};
+        
+            window.questionData['LwicxTXhmW2e2Mze7SFP'] = [{"text":"d","options":["1","13","2","3"],"correctOption":0,"marks":1,"type":"mcq","id":1774938531926.4658,"createdAt":"2026-03-31T06:28:50.322Z","addedAt":"2026-03-31T06:28:51.926Z"},{"text":"ww","modelAnswer":"ww","marks":5,"type":"written","keywords":[],"wordLimit":33,"difficulty":"medium","id":1774938551468.4902,"createdAt":"2026-03-31T06:29:09.587Z","addedAt":"2026-03-31T06:29:11.468Z"},{"text":"www","description":"www","inputFormat":"ww","outputFormat":"ww","constraints":"ww","sampleInput":"www","sampleOutput":"ww","testCases":[{"input":"w","output":"w","isHidden":false,"description":"w","id":1774938576698}],"programmingLanguages":["javascript","python","java"],"marks":10,"type":"coding","timeLimit":2,"memoryLimit":256,"id":1774938580197.652,"createdAt":"2026-03-31T06:29:38.561Z","addedAt":"2026-03-31T06:29:40.197Z"}];
+        
+        
+        // Enhance blockquotes to callouts
+        function enhanceBlockquotes() {
+            const blockquotes = document.querySelectorAll('.course-content blockquote');
+            blockquotes.forEach((bq) => {
+                const text = bq.textContent.toLowerCase();
+                let type = 'info';
+                let icon = 'info';
+                
+                if (text.includes('warning')) {
+                    type = 'warning';
+                    icon = 'warning';
+                } else if (text.includes('tip') || text.includes('note')) {
+                    type = 'tip';
+                    icon = 'lightbulb';
+                }
+                
+                const callout = document.createElement('div');
+                callout.className = 'callout callout-' + type;
+                callout.innerHTML = '<div class="callout-icon"><span class="material-icons">' + icon + '</span></div><div class="callout-content"><div class="callout-title">' + type.charAt(0).toUpperCase() + type.slice(1) + '</div><div>' + bq.innerHTML + '</div></div>';
+                bq.parentNode.replaceChild(callout, bq);
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Make images responsive
+        function makeImagesResponsive() {
+            const images = document.querySelectorAll('.course-content img');
+            images.forEach(img => {
+                if (!img.closest('.figure-container')) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'figure-container';
+                    img.parentNode.insertBefore(wrapper, img);
+                    wrapper.appendChild(img);
+                    
+                    if (img.alt && !img.nextSibling) {
+                        const caption = document.createElement('div');
+                        caption.className = 'figure-caption';
+                        caption.textContent = img.alt;
+                        wrapper.appendChild(caption);
+                    }
+                }
+                
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.borderRadius = '12px';
+            });
+        }
+        
+        // Make videos responsive
+        function makeVideosResponsive() {
+            const videos = document.querySelectorAll('.course-content video');
+            videos.forEach(video => {
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+                video.style.borderRadius = '12px';
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            generateTOC();
+            addCopyButtons();
+            enhanceBlockquotes();
+            makeImagesResponsive();
+            makeVideosResponsive();
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        });
+        
+        // Escape HTML helper
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
